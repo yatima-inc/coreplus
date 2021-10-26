@@ -9,6 +9,9 @@ impl<T: std::io::Read> Read for CoreIO<T> {
     fn read(&mut self, buf: &mut [u8]) -> Result<usize, Self::Error> {
         self.0.read(buf)
     }
+  fn read_exact(&mut self, buf: &mut [u8]) -> Result<(), Self::Error> {
+    self.0.read_exact(buf)
+  }
 }
 
 impl<T: std::io::Write> Write for CoreIO<T> {
